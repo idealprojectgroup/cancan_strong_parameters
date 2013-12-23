@@ -81,7 +81,9 @@ module CancanStrongParameters
             resource_name = self.class.resource_name
             
             parameters = keys.flatten + defaults
-            parameters << ActionController::Parameters.new(hash.attributized)
+            
+            # Don't add a _attributes suffix.
+            parameters << ActionController::Parameters.new(hash)
             
             # original: parameters = keys.flatten + defaults
             #           parameters << hash
